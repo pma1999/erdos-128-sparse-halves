@@ -9,7 +9,7 @@ edges. **This repository does not answer it.** It contains a partial bound of
 > Theorem 2(a).
 
 The paper is [`outputs/cut-independent.pdf`](outputs/cut-independent.pdf); it is
-four pages.
+five pages.
 
 | bound | | source |
 |---|---|---|
@@ -75,8 +75,8 @@ establishes that the arithmetic is not where an error hides.
 
 - Not the conjecture. Not a counterexample. Not priority.
 - The bound is conditional on Balogh–Clemen–Lidický Theorem 2(a), assumed as
-  published. It is stated there for *n* large enough; Proposition 2 of the
-  paper discharges that hypothesis by a blow-up argument.
+  published. It is stated there for *n* large enough; Proposition 1.2 of
+  the paper discharges that hypothesis by a blow-up argument.
 - The graph-theoretic content of Sections 2 and 3 is not formalized.
 - **No specialist has read the proof.** Section 2, Case 2 is where an error
   would survive both verifiers, and it is the part worth a reader's scepticism —

@@ -1,10 +1,32 @@
 \documentclass[11pt]{article}
-\usepackage{amsmath,amssymb,amsthm,hyperref}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Proposition}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=[rgb]{0.10,0.25,0.55},
+  pdftitle={A cut and independent-set bound for sparse halves},
+  pdfauthor={Pablo Miguel Argudo},
+  pdfsubject={Erdos problem 128: sparse halves in triangle-free graphs},
+  pdfkeywords={extremal graph theory, triangle-free graphs, sparse halves, Erdos 128}
+}
+
+% One shared counter, numbered by section, as in the papers cited.
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[theorem]{Remark}
 \newcommand{\bh}{\beta_*}
 \title{A cut and independent-set bound for sparse halves}
 \author{Pablo Miguel Argudo}
@@ -18,10 +40,10 @@ theorem. The argument is elementary: no flag algebra or semidefinite
 certificate is used. Its one new ingredient is a combination---apply the
 max-cut theorem, delete the edges inside the smaller side so that it becomes
 independent, and feed the result to an independent-set completion bound. The
-completion bound itself is Razborov's Section 4.5 with a single step changed;
-Section 2 states precisely what is his and what is not. All scalar constants
+completion bound itself is Razborov's Section~4.5 with a single step changed;
+Section~2 states precisely what is his and what is not. All scalar constants
 are rational and exactly certified. This is not a solution of Erd\H{o}s
-problem 128, and no claim of priority is made.
+problem~128, and no claim of priority is made.
 \end{abstract}
 
 \section{Statement and normalization}
@@ -64,7 +86,7 @@ at a lifted bipartition of $G$, of cost $t^2D_2(G)$.
 \end{proof}
 
 \begin{theorem}\label{main}
-Assume the Balogh--Clemen--Lidick\'y theorem \cite[Theorem 2(a)]{bcl}: for
+Assume the Balogh--Clemen--Lidick\'y theorem \cite[Theorem~2(a)]{bcl}: for
 $n$ large enough, every triangle-free graph satisfies $D_2(G)\le n^2/23.5$.
 Then every finite triangle-free graph $G$ has a set of $\lfloor n/2\rfloor$
 vertices spanning at most $2587n^2/100000$ edges, strictly so for $n>0$.
@@ -111,7 +133,7 @@ with $1/3\le x\le1/2$.
 \end{lemma}
 
 \noindent\textbf{Attribution.} For $\alpha\ge3/8$ this is exactly Razborov
-\cite[Theorem 3.6]{raz}, whose proof occupies his Section 4.5. Our statement
+\cite[Theorem~3.6]{raz}, whose proof occupies his Section~4.5. Our statement
 differs from his only in the range $\alpha\in[1/3,3/8)$, and the proof differs
 from his in exactly one step:
 \begin{itemize}
@@ -129,7 +151,7 @@ $\alpha\ge1/3$. It therefore applies verbatim on the wider range. We reproduce
 it below for self-containedness, not for novelty.
 \end{itemize}
 The genuinely new content of this note is not Lemma \ref{ind} but its
-combination with a max-cut theorem in Section 3.
+combination with a max-cut theorem in Section~3.
 
 \begin{proof}[Proof of Lemma \ref{ind}]
 The last sentence follows from the first because $\alpha\ge x$ and $f$ is
@@ -269,32 +291,40 @@ ingredient.
 \end{remark}
 
 \section{Verification, scope and limitations}
-\texttt{outputs/verify-cut-independent.py} and the independently written
-\texttt{outputs/verify-independent.py} recompute the identities, the rational
-margins and finite instances; both use exact arithmetic only.
-\texttt{formal/Scalar.lean} carries a compiled Lean 4 certificate for the
-scalar optimization of Section 4 and for the polynomial identities of
-Section 2, conditional on scalar hypotheses supplied as arguments.
+The identities, the rational margins and the finite instances are recomputed by
+two independently written verifiers, and the scalar optimization additionally
+carries a machine-checked certificate:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\texttt{outputs/verify-cut-independent.py} & standard library only\\
+\texttt{outputs/verify-independent.py}     & requires \texttt{sympy}, \texttt{networkx}\\
+\texttt{formal/verify.py}                  & compiles and replays \texttt{formal/Scalar.lean}
+\end{tabular}
+\end{center}
+\noindent Both verifiers use exact arithmetic only; no floating-point value
+enters any acceptance decision. The Lean~4 development certifies the scalar
+optimization of Section~4 and the polynomial identities of Section~2,
+conditional on scalar hypotheses supplied as arguments.
 
 Not established here: the conjecture $1/50$; any counterexample; a formal proof
 of the graph-theoretic content of Sections 2 and 3; and the Balogh--Clemen--%
 Lidick\'y theorem, which is assumed as published. The literature audit
-underlying the attribution in Section 2 is recorded in \texttt{LITERATURE.md};
+underlying the attribution in Section~2 is recorded in \path{LITERATURE.md};
 it is not a substitute for review by a specialist.
 
 \section*{Acknowledgement of method}
 This work was carried out with substantial assistance from AI coding and
 reasoning agents, which produced and checked the algebra, the rational
 certificates and the Lean development, and performed the literature audit
-recorded in \texttt{LITERATURE.md}. The author takes responsibility for the
+recorded in \path{LITERATURE.md}. The author takes responsibility for the
 mathematical content. No claim of priority is made and the result has not yet
 been read by a specialist referee.
 
 \begin{thebibliography}{9}
 \bibitem{bcl} J. Balogh, F. C. Clemen, B. Lidick\'y,
-\emph{Max cuts in triangle-free graphs}, arXiv:2103.14179, Theorem 2(a).
+\emph{Max cuts in triangle-free graphs}, arXiv:2103.14179, Theorem~2(a).
 \bibitem{raz} A. A. Razborov,
 \emph{More about sparse halves in triangle-free graphs},
-arXiv:2104.09406, Theorem 3.6 and Section 4.5.
+arXiv:2104.09406, Theorem~3.6 and Section~4.5.
 \end{thebibliography}
 \end{document}
