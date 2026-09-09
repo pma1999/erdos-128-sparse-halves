@@ -2,13 +2,15 @@
 
 Target: for every finite triangle-free graph, a floor(n/2)-set with at most n²/50 edges, or an exhaustively certified strict counterexample. Neither has been obtained.
 
-Best general bound derived here: **13083/500000**, conditional on the named mathematical dependencies below. The analytic proof has been checked by hand; rational constants and finite lemma tests have been independently recomputed. This is not a compiled Lean proof, and no novelty claim is made.
+Best general bound derived here: **2587/100000**, conditional on the published Balogh–Clemen–Lidický max-cut theorem. The analytic proof has been checked by hand; rational constants, polynomial identities and finite lemma tests have been independently recomputed. This is not a compiled Lean proof, and no novelty claim is made.
 
-- Proof: `outputs/mejora-cota-general.md`.
-- Exact arithmetic: `outputs/verify-improved-bound.py --vendor work/vendor`.
-- Output: `outputs/improved-bound-verification.json`.
-- Dependencies: Balogh–Clemen–Lidický max-cut theorem; Sarid's cubic lemma and rational C4 certificate; the neighborhood anchor inequality (Razborov/Sarid).
-- Producing commit: the initial research baseline commit (resolve with `git log --reverse --format=%H -- RESULTS.md`). The experiment predates version control; this commit banks it without pretending the earlier runs were committed.
+- Proof: `outputs/cut-independent.tex`.
+- Exact arithmetic: `python outputs/verify-cut-independent.py` (standard library only).
+- Output: `outputs/cut-independent-verification.json`.
+- Dependency: Balogh–Clemen–Lidický max-cut theorem. The independent-set lemma extends Razborov's Section 4.5; its derivation is included in full. No C4 certificate or Sarid cubic lemma is needed for this newer bound.
+- Producing commit: resolve `git log --diff-filter=A --format=%H -- outputs/cut-independent.tex`.
+
+Previous baseline: 13083/500000, banked in commit `e52b279`; proof and verifier retained for comparison. That earlier argument additionally uses Sarid's cubic lemma and C4 certificate and the neighborhood anchor inequality.
 
 Restricted results: the cubelike argument covers orders at most 128 and balanced blow-ups. Exact Clebsch calculations and local-search obstructions are in `outputs/`. They are not counterexamples.
 

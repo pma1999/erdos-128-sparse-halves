@@ -1,18 +1,26 @@
 # Erdős 128 research workspace
 
-**Unsolved in this repository.** There is no certified proof of 1/50 and no counterexample. The current analytic partial bound is 13083/500000, using the named external dependencies in RESULTS.md. It is not formalized in Lean and is not asserted to be new.
+**Unsolved in this repository.** There is no certified proof of 1/50 and no counterexample. The current analytic partial bound is **2587/100000 = 0.02587**, assuming the published Balogh–Clemen–Lidický max-cut theorem. It is not formalized in Lean and is not asserted to be new.
 
 All research is local. `outputs/` contains papers/notes, scripts and exact evidence; `work/` contains dependencies and scratch material. `RESULTS.md`, `LOG.md`, and `NEXT.md` track the status.
 
-With Python 3 and NetworkX installed, run:
+With Python 3, run the current verifier (standard library only):
+
+```
+python outputs/verify-cut-independent.py
+```
+
+The paper is `outputs/cut-independent.tex`. The verifier checks the exact scalar certificate, polynomial identities, 92 weighted instances of the completion lemma, and all 440 triangle-free labeled graphs of orders 0 through 5. Only 13 weighted instances lie in the newly extended independence interval; these tests do not establish universality. The analytic proof does that, subject to the named external theorem.
+
+For the earlier argument, with NetworkX installed, run:
 
 ```
 python outputs/verify-improved-bound.py --vendor work/vendor
 python outputs/clebsch_check.py
 ```
 
-The first script verifies rational inequalities and finite lemma instances, not the full analytic proof. No finite sample substitutes for a universal theorem. Its decimal output is display-only and is never used for acceptance.
+The earlier script verifies rational inequalities and finite lemma instances, not the full analytic proof. Its decimal output is display-only and is never used for acceptance. The current verifier contains no floating-point calculations.
 
 The C4 verifier and its certificate are preserved in `work/sarid-certificate/`; its source URL and SHA are documented in the proof. The external max-cut theorem is assumed as a published result, not formally proved here.
 
-Dependencies for the general bound: Balogh–Clemen–Lidický, *Max Cuts in Triangle-free Graphs*; Sarid's cubic lemma and C4 certificate; the neighborhood anchor inequality explained by Razborov and Sarid. The linked sources have been opened. A complete literature audit and all final requested deliverables remain unfinished.
+Dependencies for the current bound: Balogh–Clemen–Lidický, *Max Cuts in Triangle-free Graphs*. The completion proof adapts and credits Razborov's Section 4.5. The earlier bound additionally uses Sarid's cubic lemma and C4 certificate and the neighborhood anchor inequality. All cited sources were opened. A complete literature audit, Lean formalization and final solution deliverables remain unfinished.

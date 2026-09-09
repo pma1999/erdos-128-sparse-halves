@@ -1,0 +1,15 @@
+{
+  "bound": "2587/100000",
+  "dependency": "Balogh-Clemen-Lidicky D2 <= 2n^2/47; completion argument adapted from Razborov section 4.5",
+  "margins": {
+    "cap": "1291/2350000000",
+    "interval_left": "312483613/235000000000000",
+    "interval_right": "22649/117500000",
+    "discriminant": "442569/2500000000"
+  },
+  "polynomial_identity_checks": 64,
+  "weighted_lemma_checks": 92,
+  "weighted_checks_in_extended_range": 13,
+  "exhaustive_small_graph_checks": 440,
+  "scope": "Exact algebra certificate and finite corroboration. Universal proof is in cut-independent.tex. Not a Lean formalization or a solution at 1/50."
+}

@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\bh}{\beta_*}
+\title{A cut and independent-set bound for sparse halves}
+\author{Research draft; independent review and formalization pending}
+\date{9 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We derive the partial bound $2587/100000=0.02587$ for sparse halves
+of every finite triangle-free graph. The external input is the
+Balogh--Clemen--Lidick\'y max-cut theorem. We extend the completion
+calculation in Razborov's Section 4.5 to independence ratio $1/3$,
+and apply it after deleting the edges within one side of a cut.
+All scalar certificates are rational. This draft is not a solution
+of Erd\H{o}s problem 128, is not formalized in Lean, and makes no
+claim of priority.
+\end{abstract}
+
+\section{Statement and normalization}
+For $n>0$, let $\bh(G)$ be the minimum of
+$n^{-2}\sum_{uv\in E(G)}z_uz_v$ over $0\le z_v\le1$ and
+$\sum z_v=n/2$. A transfer between two partial coordinates has a
+concave or affine cost. Successive transfers give a minimizer with
+at most one partial coordinate. If $n$ is even it is integral; if
+$n$ is odd, dropping its one coordinate equal to $1/2$ produces
+exactly $\lfloor n/2\rfloor$ selected vertices without increasing cost.
+Also $\bh(G[t])=\bh(G)$: average a profile over each independent twin
+class to obtain a profile on $G$, and conversely lift profiles.
+
+\begin{theorem}
+Assuming the published Balogh--Clemen--Lidick\'y bound
+$D_2(G)\le 2n^2/47$, every finite triangle-free graph has a
+$\lfloor n/2\rfloor$-vertex set spanning at most
+$2587n^2/100000$ edges. For $n>0$ the displayed bound is strict.
+\end{theorem}
+For $n=0$ the empty set proves the non-strict statement. The target
+$n^2/50$ remains unproved.
+
+\section{An independent-set envelope}
+Define, for $1/3\le x\le1/2$,
+\[
+ f(x)=\begin{cases}
+  \frac32x^2-\frac54x+\frac9{32},&1/3\le x\le3/8,\\
+  \frac{x}{2}(\frac12-x),&3/8\le x\le1/2.
+ \end{cases}
+\]
+It is continuous and decreasing on this interval. Set $f(x)=0$
+for $x\ge1/2$.
+
+\begin{lemma}\label{ind}
+If a triangle-free graph has an independent set of size at least
+$xn$, where $1/3\le x\le1/2$, then $\bh(G)\le f(x)$.
+\end{lemma}
+\begin{proof}
+We give the completion calculation, adapting Razborov
+\cite[Section 4.5]{raz}. Write $\alpha$ for the maximum independent
+set size divided by $n$. The case $\alpha\ge1/2$ is immediate.
+It suffices to prove the result for $x=\alpha$; monotonicity then
+applies. By doubling the graph we may assume $n$ even.
+
+All vertex sizes and degrees below are divided by $n$; all edge
+counts are divided by $n^2$ and count unordered edges once.
+Start with a maximum independent set and add vertices of degree
+into the current set at most $k=1/2-\alpha$, stopping on reaching
+size $1/2$ or when none exists. Reaching a half costs at most
+$k^2\le\alpha k/2\le f(\alpha)$, since $\alpha\ge1/3$.
+Otherwise the resulting set $B$ has size $b\in[\alpha,1/2)$,
+edge mass at most $k(b-\alpha)$, and every outside vertex has
+degree into $B$ greater than $k$.
+
+Vertices outside $B$ with degree into $B$ greater than $b/2$
+form an independent set $C$, so $|C|/n\le\alpha$. Choose
+$D$ outside $B\cup C$ of size $d=1-\alpha-b$. Every vertex
+of $D$ has degree into $B$ in $(k,b/2]$. Put $h=1/2-b$.
+
+If some vertex in $B$ has at least $hn$ neighbors in $D$, select
+$hn$ of them. They are independent and complete $B$ to a half
+with cost at most
+\[
+ H=k(b-\alpha)+bh/2.
+\]
+For $\alpha\le3/8$ the identity
+\[
+ H=\frac32\alpha^2-\frac54\alpha+\frac9{32}
+   -\tfrac12(b-(3/4-\alpha))^2
+\]
+proves the claim. For $\alpha\ge3/8$, instead use
+\[
+ H=\alpha k/2+(3/4-2\alpha)(b-\alpha)
+      -(b-\alpha)^2/2\le\alpha k/2.
+\]
+
+In the remaining case choose a uniformly random vertex $v$ of
+$B$, put $E=N(v)\cap D$, and write $r=|E|/n<h$.
+On $B\cup E$ assign weight one and on $D\setminus E$ assign
+weight $(h-r)/(d-r)$; elsewhere assign zero. This is a fractional
+half. Notice $d-h=k>0$, so the denominator is positive.
+The set $E$ is independent. If $m(B,E)$ denotes its cross-edge
+mass with $B$, the cost is at most
+\[
+ k(b-\alpha)+m(B,E)+\tfrac b2(h-r)
+       +r(h-r)+(h-r)^2/4.
+\]
+The last term uses Mantel's inequality on $D\setminus E$.
+Let $\bar r$ denote the mean of $r$. A vertex $z\in D$ of
+degree $s_z$ into $B$ is selected with probability $s_z/b$.
+Since $s_z^2\le(k+b/2)s_z-kb/2$, double counting gives
+\[
+ \mathbb E m(B,E)\le(k+b/2)\bar r-kd/2,
+ \qquad 0\le\bar r\le d/2.
+\]
+The remaining expression is concave in $r$, so averaging bounds
+the cost of some half by
+\[
+ Q=k(b-\alpha-d/2)+bh/2+h^2/4
+                  +(k+h/2)\bar r-3\bar r^2/4.
+\]
+Its derivative at $\bar r=d/2$ is $(b-\alpha)/4\ge0$;
+therefore it is increasing on $[0,d/2]$. Substitution yields
+\[
+ Q\le\frac{13}{16}\alpha^2-\frac98\alpha b
+       -\frac3{16}b^2-\frac14\alpha+\frac12b
+ =\frac{\alpha k}{2}
+  +\frac{1-3\alpha}{2}(b-\alpha)-\frac3{16}(b-\alpha)^2
+ \le\frac{\alpha k}{2}\le f(\alpha).
+\]
+This proves the lemma, including the endpoints.
+\end{proof}
+
+\section{Deleting and restoring one side of a cut}
+Let $I=2/47$. The external max-cut theorem \cite{bcl} gives a
+partition $X,Y$, $|X|\le|Y|$, whose internal edge masses $q,j$
+satisfy $q+j\le I$. Its sufficiently-large-order formulation
+extends to every positive order: the cut cost on twin classes is
+separately affine, so $D_2(G[t])=t^2D_2(G)$, and then let $t$
+be sufficiently large.
+
+Set $c=n/(2|Y|)\in[1/2,1]$ and $x=|X|/n=1-1/(2c)$.
+The profile $c\mathbf1_Y$ gives $\bh(G)\le c^2j$.
+When $c\ge3/4$, delete the edges inside $X$. In the resulting
+triangle-free graph, $X$ is independent and $x\ge1/3$.
+Lemma \ref{ind}, followed by restoring the deleted edges, gives
+$\bh(G)\le f(x)+q$. Consequently
+\[
+ \bh(G)\le Ic^2,
+ \qquad
+ \bh(G)\le\frac{c^2}{1+c^2}(I+f(x))\quad(c\ge3/4).
+\]
+For the second inequality, add the first profile bound and
+$c^2$ times the deletion bound, and use $q+j\le I$.
+
+\section{Exact scalar certificate}
+Put $T=2587/100000$ and $c_0=7797/10000$.
+For $c\le c_0$, $\bh(G)\le Ic_0^2<T$, with margin
+$1291/2350000000$.
+
+For $c_0\le c\le4/5$, the numerator of
+$T-c^2(I+f(x))/(1+c^2)$ is
+\[
+ P(c)=(T-I-17/32)c^2+7c/8+T-3/8.
+\]
+It is concave, so its minimum on the interval is at an endpoint.
+Both endpoints are positive:
+\[
+ P(c_0)=\frac{312483613}{235000000000000},\qquad
+ P(4/5)=\frac{22649}{117500000}.
+\]
+For $4/5\le c\le1$ the numerator is $Ac^2-Bc+C$, where
+\[
+ A=T+1/4-I>0,\quad B=3/8,\quad C=T+1/8,
+ \qquad 4AC-B^2=\frac{442569}{2500000000}>0.
+\]
+Completing the square proves positivity on the whole real line.
+These three intervals exhaust $[1/2,1]$. Rounding the fractional
+half proves the theorem for even and odd orders.
+
+\section{Verification and limitations}
+Run \texttt{python outputs/verify-cut-independent.py}. It uses
+only integer and rational arithmetic. It checks all scalar margins
+and polynomial identities independently and tests the extended
+lemma on explicit weighted triangle-free graphs. It also enumerates
+small labeled graphs to test the floor convention and $n=0$.
+The finite tests are corroboration, not a proof of universality.
+The universal argument is the proof above, with the external
+max-cut theorem explicitly assumed. No Lean certificate of this
+argument has been produced. No proof claim has been submitted.
+
+\begin{thebibliography}{9}
+\bibitem{bcl} J. Balogh, F. C. Clemen, B. Lidick\'y,
+\emph{Max Cuts in Triangle-free Graphs},
+\url{https://arxiv.org/html/2103.14179v1}, Theorem 1.2(a).
+\bibitem{raz} A. A. Razborov,
+\emph{More about sparse halves in triangle-free graphs},
+\url{https://arxiv.org/html/2104.09406v2}, Section 4.5.
+\end{thebibliography}
+\end{document}
