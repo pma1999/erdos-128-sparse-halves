@@ -32,6 +32,8 @@ Finalmente, usamos la desigualdad de anclaje β*≤ρ/8−t(C₄,G)/(4ρ), para 
 
 ## 1. Refuerzo de la perturbación
 
+Nota de normalización del ingrediente anterior: el símbolo C₄ de Razborov es tres veces hom(C₄,G)/n⁴. Por ello su denominador 12ρ se convierte en 4ρ con el t(C₄,G) utilizado aquí; no se ha sustituido una constante sin cambiar la normalización.
+
 Sea H un grafo ponderado sin triángulos, con pesos positivos wᵥ que suman uno. Definamos
 
 \[

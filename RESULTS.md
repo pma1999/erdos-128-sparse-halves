@@ -8,7 +8,7 @@ Best general bound derived here: **2587/100000**, conditional on the published B
 - Exact arithmetic: `python outputs/verify-cut-independent.py` (standard library only).
 - Output: `outputs/cut-independent-verification.json`.
 - Dependency: Balogh–Clemen–Lidický max-cut theorem. The independent-set lemma extends Razborov's Section 4.5; its derivation is included in full. No C4 certificate or Sarid cubic lemma is needed for this newer bound.
-- Producing commit: resolve `git log --diff-filter=A --format=%H -- outputs/cut-independent.tex`.
+- Producing commit: `7032c42` (resolve full hash with `git rev-parse 7032c42`). Later documentation edits add the elementary Mantel proof and clarify normalization; they do not change the bound.
 
 Previous baseline: 13083/500000, banked in commit `e52b279`; proof and verifier retained for comparison. That earlier argument additionally uses Sarid's cubic lemma and C4 certificate and the neighborhood anchor inequality.
 

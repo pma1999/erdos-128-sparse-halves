@@ -1,0 +1,20 @@
+{
+  "triangle_free": true,
+  "all_cuts_checked": 256,
+  "maximum_cut": 8,
+  "independent_side": [
+    0,
+    1
+  ],
+  "internal_edges_other_side": 2,
+  "strict_auxiliary_failure": "8 > 4",
+  "all_halves_checked": 70,
+  "minimum_half_edges": 0,
+  "independent_half": [
+    2,
+    3,
+    5,
+    7
+  ],
+  "scope": "Refutes only the auxiliary inequality. This graph satisfies Erdos 128."
+}

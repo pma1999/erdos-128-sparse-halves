@@ -33,3 +33,8 @@ The following experiments were completed before this log was requested. Their sa
 ## Next structural test
 
 Conjectured intermediate statement, NOT proved: if a maximum cut has an independent side X, then e(Y) <= |X|²/4. Test exactly on small weighted templates before investing in a proof. Budget: one bounded search and immediate abandonment on a counterexample. Even if true, this would only address a restricted configuration.
+
+- Initial test: 3000 saturated weighted templates, 3110 qualifying independent-side maximum cuts, no failure. This was a bounded search, not a proof or a valid saturation reduction for the auxiliary claim.
+- Unrestricted SAT test immediately returned SAT at n=8, |X|=2. The other side has two internal edges, violating 4e(Y)<=|X|². The saved graph has an independent half and is not a counterexample to Erdős 128.
+- Independent verifier enumerates all 256 cuts and all 70 halves. Maximum cut is 8, minimum half cost is 0. An explicit infinite family explains the failure: t paths of length two and t paths of length three between the same two endpoints.
+- Verdict: **auxiliary inequality refuted; abandon this line**. Do not incorporate it into the partial-bound proof. Saturation had hidden these examples by changing the maximizing partitions.

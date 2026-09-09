@@ -1,0 +1,6 @@
+{
+  "tested_templates": 3000,
+  "qualifying_independent_maxcuts": 3110,
+  "failure": null,
+  "verdict": "no failure in bounded search; not proved"
+}
