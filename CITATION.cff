@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "A cut and independent-set bound for sparse halves"
+message: "If you refer to this work, please cite it as below."
+type: software
+authors:
+  - family-names: "Argudo"
+    given-names: "Pablo Miguel"
+abstract: >-
+  A partial bound of 2587/100000 for sparse halves in triangle-free graphs
+  (Erdos problem 128), assuming the Balogh-Clemen-Lidicky max-cut theorem.
+  Elementary: no flag algebra or semidefinite certificate. Includes two
+  independent exact-arithmetic verifiers and a Lean 4 certificate for the
+  scalar optimization. Not a solution of the problem; no priority claimed.
+keywords:
+  - extremal graph theory
+  - triangle-free graphs
+  - sparse halves
+  - Erdos problem 128
+license: CC-BY-4.0
+date-released: "2026-09-09"

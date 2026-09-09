@@ -2,27 +2,39 @@
 
 **Unsolved in this repository.** There is no certified proof of 1/50 and no counterexample. The current analytic partial bound is **2587/100000 = 0.02587**, assuming the published Balogh–Clemen–Lidický max-cut theorem. Its scalar optimization is formalized in Lean; the complete graph proof is not. Priority is not asserted.
 
-All research is local. `outputs/` contains papers/notes, scripts and exact evidence; `work/` contains dependencies and scratch material. `RESULTS.md`, `LOG.md`, and `NEXT.md` track the status.
+## What is claimed to be new
 
-`formal/Scalar.lean` contains 17 checked theorems, including the optimization for all rational parameters satisfying explicit scalar hypotheses. `python formal/verify.py` recompiles, audits all theorem axioms, and replays the module with Lean's kernel. See `formal/README.md` for the pinned portable runtime setup and the precise limits of this certificate. No graph theorem or BCL theorem is inserted as an axiom.
+Only the combination in Section 3 of the paper: apply the max-cut theorem, delete the edges inside the smaller side of the cut so that side becomes independent, apply an independent-set completion bound to the modified graph, and pay the deleted density. The completion bound itself is Razborov's, with one step of his Case 1 changed; `LITERATURE.md` records exactly what was read and what is his. An earlier version of this README overstated the extension of his Section 4.5, and has been corrected.
 
-With Python 3, run the current verifier (standard library only):
+The argument uses no flag algebra and no semidefinite certificate, which is why it is a plausible candidate for full formalization.
+
+## Layout
+
+`outputs/` holds the paper, notes, scripts and exact evidence; `work/` holds dependencies and scratch material; `formal/` holds the Lean certificate. `RESULTS.md`, `LOG.md`, `NEXT.md` and `LITERATURE.md` track status, next step and attribution.
+
+## Verifying
+
+Two independently written verifiers, both exact-arithmetic only, no floating point in any acceptance path:
 
 ```
-python outputs/verify-cut-independent.py
+python outputs/verify-cut-independent.py     # standard library only
+python outputs/verify-independent.py         # needs sympy + networkx
 ```
 
-The paper is `outputs/cut-independent.tex`. The verifier checks the exact scalar certificate, polynomial identities, 92 weighted instances of the completion lemma, and all 440 triangle-free labeled graphs of orders 0 through 5. Only 13 weighted instances lie in the newly extended independence interval; these tests do not establish universality. The analytic proof does that, subject to the named external theorem.
+The first checks the scalar certificate, the polynomial identities, 92 weighted instances of the completion lemma and all 440 triangle-free labeled graphs of orders 0–5. The second re-derives the identities symbolically, re-checks every rational margin, re-derives the argument's supremum independently, and brute-forces beta over classical families, circulants and randomised triangle-free graphs. Neither establishes universality; the analytic proof does that, subject to the named external theorem.
 
-For the earlier argument, with NetworkX installed, run:
+`formal/Scalar.lean` contains 17 checked theorems, including the optimization for all rational parameters satisfying explicit scalar hypotheses. `python formal/verify.py` recompiles, audits axioms and replays the module with Lean's kernel. See `formal/README.md` for the pinned runtime and the precise limits of that certificate. No graph theorem or BCL theorem is inserted as an axiom.
+
+For the earlier 13083/500000 argument, with NetworkX installed:
 
 ```
 python outputs/verify-improved-bound.py --vendor work/vendor
 python outputs/clebsch_check.py
 ```
 
-The earlier script verifies rational inequalities and finite lemma instances, not the full analytic proof. Its decimal output is display-only and is never used for acceptance. The current verifier contains no floating-point calculations.
+## Known limits
 
-The C4 verifier and its certificate are preserved in `work/sarid-certificate/`; its source URL and SHA are documented in the proof. The external max-cut theorem is assumed as a published result, not formally proved here.
-
-Dependencies for the current bound: Balogh–Clemen–Lidický, *Max Cuts in Triangle-free Graphs*. The completion proof adapts and credits Razborov's Section 4.5. The earlier bound additionally uses Sarid's cubic lemma and C4 certificate and the neighborhood anchor inequality. All cited sources were opened. A complete literature audit, Lean formalization and final solution deliverables remain unfinished.
+- The route's own optimum is 0.0258691…, and a perfect max-cut input would give only ≈ 0.02481. **1/50 is out of reach here** without a new ingredient.
+- Balogh–Clemen–Lidický is assumed as published, not proved. It is their Theorem 2(a), stated for *n* large enough; the paper discharges that hypothesis by a blow-up argument.
+- The graph-theoretic content of Sections 2 and 3 is not formalized.
+- No specialist has read the proof. That is the largest remaining risk, and `NEXT.md` says where to point them.

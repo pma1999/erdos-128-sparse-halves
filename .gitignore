@@ -1,8 +1,27 @@
-work/vendor/
-work/lean-runtime/
+# --- work/ is scratch and third-party dependencies: never commit any of it ---
+# It holds the 842 MB Lean runtime (GitHub rejects any file over 100 MB),
+# pip-vendored packages, and code written by other people. Ignoring the whole
+# directory means nothing dropped in there later can leak into a commit.
+# formal/setup.py re-downloads the Lean runtime and checks its SHA-256;
+# work-sarid-fetch.sh re-downloads the third-party certificate.
+work/
+
+# --- Files the Claude desktop app drops here ---
+# Private drafts and correspondence land in this folder. Never publish it.
+Claude outputs/
+
+# --- Build and interpreter artefacts ---
 __pycache__/
 *.pyc
 *.olean
 *.ilean
 .lake/
-work/formal-check/
+
+# LaTeX auxiliaries (the PDF itself is committed on purpose)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
