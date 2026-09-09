@@ -5,3 +5,4 @@ __pycache__/
 *.olean
 *.ilean
 .lake/
+work/formal-check/

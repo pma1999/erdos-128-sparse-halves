@@ -15,8 +15,8 @@ Balogh--Clemen--Lidick\'y max-cut theorem. We extend the completion
 calculation in Razborov's Section 4.5 to independence ratio $1/3$,
 and apply it after deleting the edges within one side of a cut.
 All scalar certificates are rational. This draft is not a solution
-of Erd\H{o}s problem 128, is not formalized in Lean, and makes no
-claim of priority.
+of Erd\H{o}s problem 128 and makes no claim of priority. Its scalar
+optimization is formalized in Lean; the graph argument is not.
 \end{abstract}
 
 \section{Statement and normalization}
@@ -189,8 +189,12 @@ lemma on explicit weighted triangle-free graphs. It also enumerates
 small labeled graphs to test the floor convention and $n=0$.
 The finite tests are corroboration, not a proof of universality.
 The universal argument is the proof above, with the external
-max-cut theorem explicitly assumed. No Lean certificate of this
-argument has been produced. No proof claim has been submitted.
+max-cut theorem explicitly assumed. The file \texttt{formal/Scalar.lean}
+now certifies the polynomial identities and scalar optimization in
+Lean 4.33.1, with explicit scalar hypotheses. All 17 theorems compile
+and replay in Lean's kernel without unfinished proofs or added
+mathematical axioms. The graph construction and rounding argument
+are not yet formalized. No proof claim has been submitted.
 
 \begin{thebibliography}{9}
 \bibitem{bcl} J. Balogh, F. C. Clemen, B. Lidick\'y,

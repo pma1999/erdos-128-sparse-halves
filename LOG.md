@@ -38,3 +38,13 @@ Conjectured intermediate statement, NOT proved: if a maximum cut has an independ
 - Unrestricted SAT test immediately returned SAT at n=8, |X|=2. The other side has two internal edges, violating 4e(Y)<=|X|². The saved graph has an independent half and is not a counterexample to Erdős 128.
 - Independent verifier enumerates all 256 cuts and all 70 halves. Maximum cut is 8, minimum half cost is 0. An explicit infinite family explains the failure: t paths of length two and t paths of length three between the same two endpoints.
 - Verdict: **auxiliary inequality refuted; abandon this line**. Do not incorporate it into the partial-bound proof. Saturation had hidden these examples by changing the maximizing partitions.
+
+## Lean scalar certification, 2026-09-09
+
+- Goal: certify the algebraic part of the banked argument before attempting a full formal graph construction. Budget: portable runtime plus one scalar module; no theorem about graphs will be asserted from scalar tests.
+- Consulted the context7 skill and official Lean documentation/source. Installed portable Lean 4.33.1 solely within work/lean-runtime. Official archive SHA-256: c39360867edfff6b090f20c16e18581c969ce839b71e813d76022ec04ec73e4d. No elan, global configuration, or Mathlib installation.
+- Initial ordinary decide calls failed because Rat arithmetic definitions are marked irreducible. Replaced them with kernel reduction (`decide +kernel`), not native_decide. Initial broad grind calls caused excessive kernel recursion; replaced them with smaller explicit algebra/order lemmas. Failed compilations were never accepted as certificates.
+- A leanchecker --help probe did not behave as a help command; source inspection showed it defaults to replaying project modules when no target is supplied. The probe was canceled. The final verification names Scalar explicitly and completed successfully.
+- PASS: 17 Lean theorems covering exact constants, three polynomial completion identities, three interval inequalities, and their conditional scalar envelope. All theorem dependency lists contain only propext, Classical.choice and Quot.sound; no sorryAx, generated error axioms, native-decide axioms or added mathematical axioms.
+- PASS: formal/verify.py recompiles the module and replays its declarations in Lean's kernel against the imported Std library. Output: outputs/lean-scalar-verification.json. This is not an external checker and does not reprove Std from scratch.
+- Verdict: scalar certification achieved. The coefficient remains 2587/100000; there is no new numerical bound in this turn. The graph construction, rounding, and BCL theorem are not formalized. The 1/50 target remains unresolved.

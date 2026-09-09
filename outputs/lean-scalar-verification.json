@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "scope": "Conditional scalar bound only; graph construction not formalized.",
+  "lean_version": "Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "source_sha256": "9a0d236b3088b06f64dd67042167d95fd4214b8884d412fc291a1c337c9c5b66",
+  "checked_theorems": 17,
+  "axioms": {
+    "SparseHalf.cap_margin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.left_margin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.right_margin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.discriminant_margin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.scalar_signs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.square_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.completion_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.average_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.average_at_cap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.average_derivative_at_cap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.cap_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.middle_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.positive_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.order_contradiction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.upper_interval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.rational_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SparseHalf.scalar_envelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "replay": "passed, target module Scalar only; imported standard library trusted",
+  "no_added_axioms": true,
+  "no_sorry": true,
+  "limitations": [
+    "No formal graph construction or rounding theorem yet.",
+    "No formal proof of the external BCL max-cut theorem.",
+    "No theorem at 1/50 and no counterexample."
+  ]
+}

@@ -1,8 +1,10 @@
 # Erdős 128 research workspace
 
-**Unsolved in this repository.** There is no certified proof of 1/50 and no counterexample. The current analytic partial bound is **2587/100000 = 0.02587**, assuming the published Balogh–Clemen–Lidický max-cut theorem. It is not formalized in Lean and is not asserted to be new.
+**Unsolved in this repository.** There is no certified proof of 1/50 and no counterexample. The current analytic partial bound is **2587/100000 = 0.02587**, assuming the published Balogh–Clemen–Lidický max-cut theorem. Its scalar optimization is formalized in Lean; the complete graph proof is not. Priority is not asserted.
 
 All research is local. `outputs/` contains papers/notes, scripts and exact evidence; `work/` contains dependencies and scratch material. `RESULTS.md`, `LOG.md`, and `NEXT.md` track the status.
+
+`formal/Scalar.lean` contains 17 checked theorems, including the optimization for all rational parameters satisfying explicit scalar hypotheses. `python formal/verify.py` recompiles, audits all theorem axioms, and replays the module with Lean's kernel. See `formal/README.md` for the pinned portable runtime setup and the precise limits of this certificate. No graph theorem or BCL theorem is inserted as an axiom.
 
 With Python 3, run the current verifier (standard library only):
 
