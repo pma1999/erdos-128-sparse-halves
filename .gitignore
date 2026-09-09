@@ -1,0 +1,7 @@
+work/vendor/
+work/lean-runtime/
+__pycache__/
+*.pyc
+*.olean
+*.ilean
+.lake/

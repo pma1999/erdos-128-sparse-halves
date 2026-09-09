@@ -1,0 +1,20 @@
+[
+  {
+    "template": "Petersen",
+    "minimum": 128,
+    "corners_checked": 1512,
+    "counterexample": false
+  },
+  {
+    "template": "Mycielski_C5",
+    "minimum": 128,
+    "corners_checked": 1920,
+    "counterexample": false
+  },
+  {
+    "template": "Clebsch",
+    "minimum": 110,
+    "corners_checked": 89352,
+    "counterexample": false
+  }
+]

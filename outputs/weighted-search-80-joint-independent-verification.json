@@ -1,0 +1,20 @@
+[
+  {
+    "template": "joint_search_k10_seed_Petersen",
+    "minimum": 128,
+    "corners_checked": 1512,
+    "counterexample": false
+  },
+  {
+    "template": "joint_search_k11_seed_Mycielski_C5",
+    "minimum": 128,
+    "corners_checked": 1920,
+    "counterexample": false
+  },
+  {
+    "template": "joint_search_k16_seed_Clebsch",
+    "minimum": 128,
+    "corners_checked": 61440,
+    "counterexample": false
+  }
+]

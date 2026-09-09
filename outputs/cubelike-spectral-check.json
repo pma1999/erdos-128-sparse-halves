@@ -1,0 +1,50 @@
+{
+  "rows": [
+    {
+      "n": 2,
+      "integer_p_bound": 0,
+      "edge_bound": "0",
+      "target": "2/25"
+    },
+    {
+      "n": 4,
+      "integer_p_bound": 0,
+      "edge_bound": "0",
+      "target": "8/25"
+    },
+    {
+      "n": 8,
+      "integer_p_bound": 0,
+      "edge_bound": "0",
+      "target": "32/25"
+    },
+    {
+      "n": 16,
+      "integer_p_bound": 1,
+      "edge_bound": "4",
+      "target": "128/25"
+    },
+    {
+      "n": 32,
+      "integer_p_bound": 2,
+      "edge_bound": "16",
+      "target": "512/25"
+    },
+    {
+      "n": 64,
+      "integer_p_bound": 5,
+      "edge_bound": "80",
+      "target": "2048/25"
+    },
+    {
+      "n": 128,
+      "integer_p_bound": 10,
+      "edge_bound": "320",
+      "target": "8192/25"
+    }
+  ],
+  "exhaustive_triangle_free_generator_sets_on_F2_4": 3049,
+  "largest_hyperplane_internal_degree_on_F2_4": 1,
+  "additional_random_generator_sets_checked": 300,
+  "scope": "Checks corroborate the separate analytic proof; random tests are not a general proof."
+}

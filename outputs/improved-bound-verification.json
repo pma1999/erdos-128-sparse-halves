@@ -1,0 +1,40 @@
+{
+  "exact": {
+    "split_density": "31867/100000",
+    "I": "2/47",
+    "astar": "400000/1897749",
+    "cstar": "1497749/1897749",
+    "mustar": "381830139064/3601451267001",
+    "hprime_min": "9488367383/759099600000",
+    "left_derivative_bound_1": "30664403/3906250000",
+    "left_derivative_bound_2": "28819764993/3906250000000",
+    "mu_derivative_bound_1": "48/2209",
+    "mu_derivative_bound_2": "587968/4879681",
+    "right_correction_bound_1": "256/2209",
+    "right_correction_bound_2": "827648/4879681",
+    "high_density_bound": "1308242889/50000000000",
+    "low_density_bound": "1222245031293820230700164127328578766/46712448010755312062426789683220801001",
+    "claimed_bound": "13083/500000",
+    "gap_to_claimed_bound": "16441677801632362647625761288356496083/23356224005377656031213394841610400500500000"
+  },
+  "decimal_display_only": {
+    "split_density": 0.31867,
+    "I": 0.0425531914893617,
+    "astar": 0.21077602991754968,
+    "cstar": 0.7892239700824503,
+    "mustar": 0.10602118722599224,
+    "hprime_min": 0.012499502546174442,
+    "left_derivative_bound_1": 0.007850087168,
+    "left_derivative_bound_2": 0.007377859838208,
+    "mu_derivative_bound_1": 0.021729289271163424,
+    "mu_derivative_bound_2": 0.12049312239877975,
+    "right_correction_bound_1": 0.11588954277953825,
+    "right_correction_bound_2": 0.16961108728213997,
+    "high_density_bound": 0.02616485778,
+    "low_density_bound": 0.026165296047263555,
+    "claimed_bound": 0.026166,
+    "gap_to_claimed_bound": 7.039527364460431e-07
+  },
+  "finite_lemma_checks": 1480,
+  "scope": "Exact constants for an analytic proof; finite lemma checks are corroboration only."
+}
